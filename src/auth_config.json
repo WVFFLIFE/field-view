@@ -1,0 +1,6 @@
+{
+    "domain": "dev-9hn20ypa.auth0.com",
+    "clientId": "NiDXQ4fYYUk8jOQXnfdEsoCT5zMkwFO2",
+    "audience": "https://fieldvision-9f35.restdb.io/rest/",
+    "redirectUri": "https://operations.uds.systems/sales-invoice"
+}
