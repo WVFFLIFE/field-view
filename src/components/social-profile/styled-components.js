@@ -5,30 +5,31 @@ import {
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-const StyledCard = withStyles({
+const StyledCard = withStyles(theme => ({
     root: {
+        padding: 20,
         background: '#fff',
         border: '1px solid #e8e8e8',
         borderRadius: 0,
-        boxShadow: 'none'
+        boxShadow: 'none',
+        [theme.breakpoints.down('md')]: {
+            paddingBottom: 20
+        }
     }
-})(Card);
+}))(Card);
 
 const StyledCardHeader = withStyles(theme => ({
     root: {
         position: 'relative',
-        marginBottom: '15px',
-        padding: 20,
+        padding: 0,
+        paddingBottom: 15,
         textTransform: 'uppercase',
-        [theme.breakpoints.down('md')]: {
-            marginBottom: 0
-        },
         '&::before': {
             content: "''",
             position: 'absolute',
             bottom: 0,
-            width: 'calc(100% - 40px)',
-            height: 3,
+            width: '100%',
+            height: 2,
             background: '#2d7ff9'
         }
     },

@@ -17,9 +17,13 @@ const useStyles = makeStyles(theme => ({
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
-        padding: 20,
+        padding: 0,
+        [theme.breakpoints.down('md')]: {
+            flexDirection: 'column'
+        },
         '&:nth-child(1)': {
-            paddingTop: 0
+            paddingTop: 15,
+            paddingBottom: 20
         },
         '&::before': {
             content: "''",
@@ -32,6 +36,7 @@ const useStyles = makeStyles(theme => ({
             background: '#E8E8E8'
         },
         '&:last-child': {
+            paddingBottom: 0,
             '&::before': {
                 display: 'none'
             }
@@ -40,20 +45,36 @@ const useStyles = makeStyles(theme => ({
     item: {
         boxSizing: 'border-box',
         width: '50%',
-        padding: 5
+        padding: 5,
+        [theme.breakpoints.down('md')]: {
+            width: '100%',
+            paddingBottom: 10
+        },
     },
     leftSide: {
         display: 'flex',
         flexWrap: 'wrap',
-        flexGrow: '2.7'
+        flexGrow: '2.7',
+        [theme.breakpoints.down('md')]: {
+            flexDirection: 'column',
+            width: '100%'
+        },
     },
     rightSide: {
         display: 'flex',
         justifyContent: 'flex-end',
         flexGrow: '0.3',
+        [theme.breakpoints.down('md')]: {
+            justifyContent: 'flex-end',
+            width: '100%',
+            marginTop: 7
+        },
     },
     labelWrapper: {
-        marginBottom: 16
+        marginBottom: 16,
+        [theme.breakpoints.down('md')]: {
+            marginBottom: 8
+        },
     },
     inputWidth: {
         width: '100%'

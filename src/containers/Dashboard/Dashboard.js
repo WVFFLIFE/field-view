@@ -175,34 +175,35 @@ const Dashboard = () => {
                         [classes.contentShift]: open,
                     })}
                     >
+                        {/* router order must be followed */}
                         <Switch>
+                            <PrivateRouter path="/contact/create-entity" exact component={ContactCreator} />
                             <PrivateRouter path="/contact" exact component={Contacts} />
                             <PrivateRouter path="/contact/:id" exact component={Details} />
-                            <PrivateRouter path="/create-entity/contact" exact component={ContactCreator} />
+                            <PrivateRouter path="/bank-account/create-entity" exact component={BankAccountCreator} />
                             <PrivateRouter path="/bank-account" exact component={BankAccount} />
                             <PrivateRouter path="/bank-account/:id" exact component={Details} />
-                            <PrivateRouter path="/create-entity/bank-account" exact component={BankAccountCreator} />
+                            <PrivateRouter path="/sales-invoice/create-entity" exact component={SalesInvoiceCreator} />
                             <PrivateRouter path="/sales-invoice" exact component={SalesInvoice} />
                             <PrivateRouter path="/sales-invoice/:id" exact component={SalesInvoiceDetails} />
-                            <PrivateRouter path="/create-entity/sales-invoice" exact component={SalesInvoiceCreator} />
+                            <PrivateRouter path="/organization/create-entity" exact component={OrganizationsCreator} />
                             <PrivateRouter path="/organization" exact component={Organizations} />
                             <PrivateRouter path="/organization/:id" exact component={OrganizationDetails} />
-                            <PrivateRouter path="/create-entity/organization" exact component={OrganizationsCreator} />
+                            <PrivateRouter path="/person/create-entity" exact component={PersonCreator} />
                             <PrivateRouter path="/person" exact component={Persons} />
                             <PrivateRouter path="/person/:id" exact component={PersonDetails} />
-                            <PrivateRouter path="/create-entity/person" exact component={PersonCreator} />
-                            <PrivateRouter path="/create-entity/invoiceline" exact component={InvoiceLineCreator} />
+                            <PrivateRouter path="/invoiceline" exact component={InvoiceLineCreator} />
+                            <PrivateRouter path="/product/create-entity" exact component={ProductsCreator} />
                             <PrivateRouter path="/product" exact component={Products} />
-                            <PrivateRouter path="/create-entity/product" exact component={ProductsCreator} />
                             <PrivateRouter path="/product/:id" exact component={Details} />
+                            <PrivateRouter path="/social-platform/create-entity" exact component={SocialPlatformCreator} />
                             <PrivateRouter path="/social-platform" exact component={SocialPlatform} />
                             <PrivateRouter path="/social-platform/:id" exact component={Details} />
-                            <PrivateRouter path="/create-entity/social-platform" exact component={SocialPlatformCreator} />
+                            <PrivateRouter path="/project/create-entity" exact component={ProjectCreator}/>
                             <PrivateRouter path="/project" exact component={Project}/>
-                            <PrivateRouter path="/create-entity/project" exact component={ProjectCreator}/>
                             <PrivateRouter path="/project/:id" exact component={Details}/>
+                            <PrivateRouter path="/project-log/create-entity" exact component={ProjectLogCreator}/>
                             <PrivateRouter path="/project-log" exact component={ProjectLog}/>
-                            <PrivateRouter path="/create-entity/project-log" exact component={ProjectLogCreator}/>
                             <PrivateRouter path="/project-log/:id" exact component={Details}/>
                             <Redirect to="/sales-invoice" />
                         </Switch>

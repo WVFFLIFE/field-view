@@ -8,11 +8,14 @@ import {
 import InboxIcon from '@material-ui/icons/Inbox';
 import { withStyles } from '@material-ui/core/styles';
 
-const StyledList = withStyles({
+const StyledList = withStyles(theme => ({
     root: {
-        paddingTop: 8
+        paddingTop: 8,
+        [theme.breakpoints.down('md')]: {
+            paddingBottom: 65
+        }
     }
-})(List);
+}))(List);
 
 const StyledListItem = withStyles({
     root: {

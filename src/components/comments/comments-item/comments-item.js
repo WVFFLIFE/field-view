@@ -19,9 +19,10 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: 20,
-        '&:nth-child(1)': {
-            paddingTop: 0
+        padding: '20px 0',
+        [theme.breakpoints.down('md')]: {
+            flexDirection: 'column',
+            alignItems: 'flex-start'
         },
         '&::before': {
             content: "''",
@@ -34,6 +35,7 @@ const useStyles = makeStyles(theme => ({
             background: '#E8E8E8'
         },
         '&:last-child': {
+            paddingBottom: 0,
             '&::before': {
                 display: 'none'
             }
@@ -51,7 +53,10 @@ const useStyles = makeStyles(theme => ({
     textRoot: {
         display: 'flex',
         flexDirection: 'column',
-        flexGrow: '2.7'
+        flexGrow: '2.7',
+        [theme.breakpoints.down('md')]: {
+            width: '100%'
+        },
     },
     typography: {
         fontFamily: 'SegoeUIRegular',
@@ -79,6 +84,10 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'flex-end',
         flexGrow: '0.3',
+        [theme.breakpoints.down('md')]: {
+            width: '100%',
+            marginTop: 7
+        },
     },
     actionContainer: {
         display: 'flex',
@@ -160,7 +169,7 @@ const CommentsItem = ({ comment, handleDelete, editComment }) => {
                                 </IconButton>
                                 <IconButton
                                     className={classes.icon}
-                                    disabled={commentText === comment.text}
+                                    disabled={commentText === comment.text || !commentText.length}
                                     onClick={setCommentChanges}
                                 >
                                     <CheckIcon />

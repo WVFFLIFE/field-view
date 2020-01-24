@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import { TableBody, TableRow, Button } from '@material-ui/core';
+import { 
+    TableBody, 
+    TableRow, 
+    Button, 
+    TablePagination,
+    makeStyles
+} from '@material-ui/core';
 import PropTypes from 'prop-types';
 import {
     StyledHeaderIconTableCell,
@@ -14,7 +20,16 @@ import DeleteIcon from '@material-ui/icons/DeleteOutline';
 import { Add } from '@material-ui/icons';
 import { stableSort, getSorting } from '../../../utils';
 
+const useStyles = makeStyles(theme => ({
+    spacer: {
+        [theme.breakpoints.down('md')]: {
+            flex: 0
+        }
+    }
+}))
+
 const GridBody = (props) => {
+    const classes = useStyles();
     const [hoverId, setHoverId] = useState('');
     const {
         selectedRows,
@@ -28,7 +43,9 @@ const GridBody = (props) => {
         partyData,
         personData,
         page,
-        rowsPerPage
+        rowsPerPage,
+        handleChangePage,
+        handleChangeRowsPerPage
     } = props;
     
     const { match, history } = useReactRouter();
@@ -117,11 +134,32 @@ const GridBody = (props) => {
             )}
             <TableRow>
                 <StyledHeaderIconTableCell>
-                    <StyledIconButton onClick={() => history.push(`/create-entity/${path}`)}>
+                    <StyledIconButton onClick={() => history.push(`/${path}/create-entity`)}>
                         <Add />
                     </StyledIconButton>
                 </StyledHeaderIconTableCell>
                 <StyledTableCell colSpan={headCells.length}></StyledTableCell>
+            </TableRow>
+            <TableRow>
+                <StyledTableCell
+                    colSpan={headCells.length + 1}
+                    style={{
+                        padding: '3px'
+                    }}
+                >
+                    <TablePagination 
+                        classes={{
+                            spacer: classes.spacer
+                        }}
+                        component="div"
+                        count={data.length}
+                        rowsPerPageOptions={[5, 10]}
+                        page={page}
+                        rowsPerPage={rowsPerPage}
+                        onChangePage={handleChangePage}
+                        onChangeRowsPerPage={handleChangeRowsPerPage}
+                    />
+                </StyledTableCell>
             </TableRow>
         </TableBody>
     )

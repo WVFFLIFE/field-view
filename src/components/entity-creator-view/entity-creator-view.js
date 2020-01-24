@@ -119,6 +119,7 @@ const EntityCreatorView = props => {
         <>
             {isTabletOrMobile ? (
                 <ExpansionPanel
+                    defaultExpanded={true}
                     TransitionProps={{ unmountOnExit: true }}
                     classes={{
                         root: classes.expansionPanelRoot,

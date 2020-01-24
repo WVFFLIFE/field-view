@@ -73,9 +73,9 @@ const Breadcrumbs = ({location}) => {
             }
             {
                 urlArr.filter(url => url !== '').map((value, index, array) => {
-                    const to = `/${urlArr.slice(0, index + 1).join('/')}`;
-                    const last = index === urlArr.length - 1;
                     const label = value.includes('-') ? value.split('-').map(str => capitalizeFirstLetter(str)).join(' ') : capitalizeFirstLetter(array[index]);
+                    const to = label === 'Create Entity' ? `/${array[array.length - 1]}` : `/${urlArr.slice(0, index + 1).join('/')}`;
+                    const last = index === urlArr.length - 1;
 
                     return last ? (
                         <StyledTypography key={value}>

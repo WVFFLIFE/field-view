@@ -14,10 +14,7 @@ const useStyles = makeStyles(theme => ({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: 20,
-        '&:nth-child(1)': {
-            paddingTop: 0
-        },
+        padding: '20px 0',
         '&::before': {
             content: "''",
             position: 'absolute',

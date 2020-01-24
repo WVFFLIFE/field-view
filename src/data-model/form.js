@@ -254,13 +254,6 @@ export const formModel = [
                         type: 'text',
                         editable: true
                     },
-                    {
-                        name: 'partyid',
-                        validations: [],
-                        label: 'Party',
-                        type: 'lookUp',
-                        editable: true
-                    }
                 ]
             }
         ]
@@ -445,13 +438,6 @@ export const formModel = [
                         validations: [],
                         label: 'Spouse',
                         type: 'text',
-                        editable: true
-                    },
-                    {
-                        name: 'partyid',
-                        validations: [],
-                        label: 'Party',
-                        type: 'lookUp',
                         editable: true
                     }
                 ]

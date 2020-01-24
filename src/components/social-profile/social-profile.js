@@ -106,8 +106,6 @@ const SocialProfile = ({ partyid }) => {
             })
     }
 
-    console.log(data);
-
     return (
         <StyledCard>
             <StyledCardHeader

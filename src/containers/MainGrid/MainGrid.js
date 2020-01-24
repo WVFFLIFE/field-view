@@ -3,21 +3,13 @@ import PropTypes from 'prop-types';
 import GridHeader from '../../components/grid-view/grid-header';
 import GridBody from '../../components/grid-view/grid-body';
 import { StyledGrid } from './styled-components';
-import { LinearProgress, TablePagination, makeStyles } from '@material-ui/core'
+import { LinearProgress } from '@material-ui/core'
 import { createDataForGrid } from '../../data-model/data-converter';
 import crmApi from '../../services/crm-api';
 import { useAuth0 } from '../../react-auth0-spa';
 import {setToLocalStorage, getFromLocalStorage} from '../../utils/index';
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        border: '1px solid #e8e8e8',
-        borderTop: 'none'
-    }
-}))
-
 const MainGrid = (props) => {
-    const classes = useStyles();
     const [order, setOrder] = useState('asc');
     const [orderBy, setOrderBy] = useState(props.orderBy);
     const [selectedRows, setSelectedRows] = useState([]);
@@ -93,6 +85,8 @@ const MainGrid = (props) => {
                 <GridBody 
                     page={page}
                     rowsPerPage={rowsPerPage}
+                    handleChangePage={handleChangePage}
+                    handleChangeRowsPerPage={handleChangeRowsPerPage}
                     data={gridData}
                     emtyRows={emtyRows}
                     partyData={props.partyData}
@@ -105,16 +99,6 @@ const MainGrid = (props) => {
                     handleClick={handleClick}
                 />
             </StyledGrid>
-            <TablePagination
-                className={classes.root}
-                rowsPerPageOptions={[5, 10]}
-                component="div"
-                count={gridData.length}
-                rowsPerPage={rowsPerPage}
-                page={page}
-                onChangePage={handleChangePage}
-                onChangeRowsPerPage={handleChangeRowsPerPage}
-            />
         </div>
     )
 }

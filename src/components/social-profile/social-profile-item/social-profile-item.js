@@ -10,7 +10,7 @@ import {
     makeStyles,
     FormControl,
     IconButton,
-    CircularProgress
+    CircularProgress,
 } from '@material-ui/core';
 import { SocialProfileStatusTypes } from '../../../data-model/case';
 
@@ -19,9 +19,10 @@ const useStyles = makeStyles(theme => ({
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
-        padding: 20,
-        '&:nth-child(1)': {
-            paddingTop: 0
+        padding: '20px 0',
+        [theme.breakpoints.down('md')]: {
+            flexDirection: 'column',
+            alignItems: 'flex-start'
         },
         '&::before': {
             content: "''",
@@ -34,28 +35,44 @@ const useStyles = makeStyles(theme => ({
             background: '#E8E8E8'
         },
         '&:last-child': {
+            paddingBottom: 0,
             '&::before': {
                 display: 'none'
             }
-        }
+        },
     },
     item: {
         boxSizing: 'border-box',
         width: '50%',
-        padding: 5
+        padding: 5,
+        [theme.breakpoints.down('md')]: {
+            width: '100%',
+            paddingBottom: 10
+        },
     },
     leftSide: {
         display: 'flex',
         flexWrap: 'wrap',
-        flexGrow: '2.7'
+        flexGrow: '2.7',
+        [theme.breakpoints.down('md')]: {
+            flexDirection: 'column',
+            width: '100%'
+        },
     },
     rightSide: {
         display: 'flex',
         justifyContent: 'flex-end',
         flexGrow: '0.3',
+        [theme.breakpoints.down('md')]: {
+            width: '100%',
+            marginTop: 7
+        },
     },
     labelWrapper: {
-        marginBottom: 16
+        marginBottom: 16,
+        [theme.breakpoints.down('md')]: {
+            marginBottom: 8
+        },
     },
     inputWidth: {
         width: '100%'
@@ -69,6 +86,9 @@ const useStyles = makeStyles(theme => ({
         fontSize: 14,
         fontFamily: 'SegoeUIBold',
         color: 'rgb(76, 76, 81)',
+        [theme.breakpoints.down('md')]: {
+            fontSize: 12
+        },
     },
     icon: {
         padding: 2,
@@ -99,6 +119,14 @@ const useStyles = makeStyles(theme => ({
         '&:last-child': {
             marginBottom: 0
         }
+    },
+    desktopDivider: {
+        height: 50,
+        background: 'lightgrey'
+    },
+    mobileDivider: {
+        width: '100%',
+        background: 'lightgrey'
     }
 }));
 

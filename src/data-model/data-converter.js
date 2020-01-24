@@ -64,7 +64,6 @@ function dataForCard(str, obj) {
                 'industry': obj.industry,
                 'numberofemployees': obj.numberofemployees,
                 'siccode': obj.siccode,
-                'partyid': !obj.partyid.length ? {_id: '', name: ''} : { _id: obj.partyid[0]._id, name: obj.partyid[0].name },
             }
         case 'paymentprovider':
             return {
@@ -85,7 +84,6 @@ function dataForCard(str, obj) {
                 'middlename': obj.middlename,
                 'salutation': obj.salutation,
                 'spouse': obj.spouse,
-                'partyid': !obj.partyid.length ? {_id: '', name: ''} : { _id: obj.partyid[0]._id, name: obj.partyid[0].name },
             }
         case 'bank':
             return {
@@ -158,6 +156,8 @@ function dataForCard(str, obj) {
                 'employeeid': obj.employeeid.length ? {_id: obj.employeeid[0]._id, firstname: obj.employeeid[0].firstname, lastname: obj.employeeid[0].lastname} : {_id: '', firstname: '', lastname: ''},
                 'totalamount': obj.totalamount,
                 'currency': obj.currency,
+                'price': obj.price,
+                'hoursworked': obj.hoursworked
             }
 
         default:
@@ -271,7 +271,6 @@ function createDataForCard(str, obj) {
                     'middlename': obj.middlename,
                     'salutation': obj.salutation,
                     'spouse': obj.spouse,
-                    'partyid': !obj.partyid.length ? {_id: '', name: ''} : { _id: obj.partyid[0]._id, name: obj.partyid[0].name },
                 }
             } : {
                 'person': {
@@ -286,7 +285,6 @@ function createDataForCard(str, obj) {
                     'middlename': obj.middlename,
                     'salutation': obj.salutation,
                     'spouse': obj.spouse,
-                    'partyid': !obj.partyid.length ? {_id: '', name: ''} : { _id: obj.partyid[0]._id, name: obj.partyid[0].name },
                 }
             }
         case 'bank':
@@ -597,7 +595,7 @@ function getEmptyEntity(str) {
             return {
                 IBAN: '',
                 partyid: {_id: '', name: ''},
-                bankid: ''
+                bankid: {_id: '', BIC: ''}
             }
         case 'sales-invoice':
             return {
