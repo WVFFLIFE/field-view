@@ -9,7 +9,8 @@ import {
     RelationshiptypeTypes,
     OwnershipTypes,
     StatusTypes,
-    ProjectStatusTypes
+    ProjectStatusTypes,
+    MonthTypes
 } from './case';
 
 export const formProps = {
@@ -20,6 +21,10 @@ export const formProps = {
         organization: {
             derivedtypes: [...DerivedTypes],
             numberofemployees: [...NumberOfEmployeesTypes],
+        },
+        legalentity: {
+            ownership: [...OwnershipTypes],
+            relationshiptype: [...RelationshiptypeTypes]
         },
         person: {
             derivedtypes: [...DerivedTypes],
@@ -36,15 +41,11 @@ export const formProps = {
         },
         project: {
             status: [...ProjectStatusTypes]
+        },
+        projectlog: {
+            month: [...MonthTypes],
+            currency: [...CurrencyTypes]
         }
-        // currency: [...CurrencyTypes],
-        // gender: [...GenderTypes],
-        // maritalstatus: [...MaritalStatusTypes],
-        // numberofemployees: [...NumberOfEmployeesTypes],
-        // derivedtypes: [...DerivedTypes],
-        // relationshiptype: [...RelationshiptypeTypes],
-        // ownership: [...OwnershipTypes],
-        // status: [...StatusTypes]
     }
 }
 
@@ -822,6 +823,71 @@ export const formModel = [
                         validations: [],
                         label: 'Status',
                         type: 'optionSet',
+                        editable: true
+                    }
+                ]
+            }
+        ],
+    },
+    {
+        groupName: 'Project Log',
+        fieldsGroup: [
+            {
+                fields: [
+                    {
+                        name: 'year',
+                        validations: [],
+                        label: 'Year',
+                        type: 'number',
+                        editable: true
+                    },
+                    {
+                        name: 'month',
+                        validations: [],
+                        label: 'Month',
+                        type: 'optionSet',
+                        editable: true
+                    },
+                    {
+                        name: 'projectid',
+                        validations: [],
+                        label: 'Project',
+                        type: 'lookUp',
+                        editable: true
+                    },
+                    {
+                        name: 'employeeid',
+                        validations: [],
+                        label: 'Employee',
+                        type: 'lookUp',
+                        editable: true
+                    },
+                    {
+                        name: 'totalamount',
+                        validations: [],
+                        label: 'Total amount',
+                        type: 'number',
+                        editable: true
+                    },
+                    {
+                        name: 'currency',
+                        validations: [],
+                        label: 'Currency',
+                        type: 'optionSet',
+                        editable: true
+                    },
+                    {
+                        name: 'price',
+                        validations: [],
+                        label: 'Price',
+                        type: 'number',
+                        editable: true
+                    },
+                    {
+                        name: 'hoursworked',
+                        validations: [],
+                        label: 'Hours worked',
+                        type: 'number',
                         editable: true
                     }
                 ]

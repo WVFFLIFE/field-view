@@ -493,8 +493,6 @@ class CRMAPI {
         const projectData = await this.getDataWithToken('project', token);
         const partyData = await this.getData('party');
         const personData = await this.getData('person');
-        const projectLog = await this.getData('projectlog');
-        console.log(projectLog);
 
         return {
             projectData,

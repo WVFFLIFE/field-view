@@ -106,6 +106,8 @@ const SocialProfile = ({ partyid }) => {
             })
     }
 
+    console.log(data);
+
     return (
         <StyledCard>
             <StyledCardHeader
@@ -123,7 +125,7 @@ const SocialProfile = ({ partyid }) => {
                     </>
                 }
             />
-            <StyledCardContent className={!data.length ? classes.loaderRoot : null}>
+            <StyledCardContent className={loading ? classes.loaderRoot : null}>
                 {loading ? (
                     <CircularProgress
                         size={30}

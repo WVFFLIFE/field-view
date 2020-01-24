@@ -7,6 +7,7 @@ import { LinearProgress, TablePagination, makeStyles } from '@material-ui/core'
 import { createDataForGrid } from '../../data-model/data-converter';
 import crmApi from '../../services/crm-api';
 import { useAuth0 } from '../../react-auth0-spa';
+import {setToLocalStorage, getFromLocalStorage} from '../../utils/index';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -22,7 +23,7 @@ const MainGrid = (props) => {
     const [selectedRows, setSelectedRows] = useState([]);
     const [requestStatus, setRequestStatus] = useState(false);
     const [page, setPage] = useState(0);
-    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [rowsPerPage, setRowsPerPage] = useState(getFromLocalStorage('rows') || 10);
     const {getTokenSilently} = useAuth0();
 
     const handleClick = (event, id) => {
@@ -49,7 +50,9 @@ const MainGrid = (props) => {
     }
 
     const handleChangeRowsPerPage = event => {
-        setRowsPerPage(parseInt(event.target.value, 10));
+        const rows = parseInt(event.target.value, 10);
+        setRowsPerPage(rows);
+        setToLocalStorage('rows', rows);
         setPage(0);
     }
 

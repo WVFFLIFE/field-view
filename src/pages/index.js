@@ -22,6 +22,7 @@ import PersonDetails from './PersonDetails';
 import Project from './Project';
 import ProjectCreator from './ProjectCreator';
 import ProjectLog from './ProjectLog';
+import ProjectLogCreator from './ProjectLogCreator';
 
 export {
     BankAccount,
@@ -47,5 +48,6 @@ export {
     PersonDetails,
     Project,
     ProjectCreator,
-    ProjectLog
+    ProjectLog,
+    ProjectLogCreator
 }

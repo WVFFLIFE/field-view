@@ -216,7 +216,9 @@ const CardApp = ({ field, data, getData, title }) => {
         event.persist();
 
         setFormState(currentFormState => {
-            if (name === 'ownerid' || name === 'managerid') {
+            if (name === 'ownerid' || 
+                name === 'managerid' || 
+                name === 'employeeid') {
                 return {
                     ...currentFormState,
                     [name]: typeof data === 'object' && data !== null ? {
@@ -338,6 +340,15 @@ const CardApp = ({ field, data, getData, title }) => {
                                                 changeHandler={(event, data) => handleLookUpFieldChange(event, data, innerField)}
                                                 updateHandler={(event) => updateFields(event, innerField)}
                                             />
+                                        ) : fieldOptions.type === 'number' ? (
+                                            <TextField
+                                                type="number"
+                                                disabled={!fieldOptions.editable || requestStatus}
+                                                name={innerField}
+                                                value={formState[innerField] !== null ? formState[innerField] : ''}
+                                                changeHandler={handleFieldChange}
+                                                updateHandler={(event) => updateFields(event, innerField)}
+                                            />
                                         ) : null}
                                     </StyledFormControl>
                                 </div>
@@ -354,9 +365,8 @@ const CardApp = ({ field, data, getData, title }) => {
                         />
                         <StyledCardContent>
                             {Object.keys(_objectWithoutProperties(data, ['_id', 'id'])).map(innerField => {
-
                                 const [fieldOptions] = options.fieldsGroup[0].fields.filter(obj => {
-                                    return obj.name === innerField
+                                    return obj.name === innerField;
                                 });
 
                                 return (
@@ -420,6 +430,15 @@ const CardApp = ({ field, data, getData, title }) => {
                                                     name={innerField}
                                                     value={formState[innerField]}
                                                     changeHandler={(event, data) => handleLookUpFieldChange(event, data, innerField)}
+                                                    updateHandler={(event) => updateFields(event, innerField)}
+                                                />
+                                            ) : fieldOptions.type === 'number' ? (
+                                                <TextField
+                                                    type="number"
+                                                    disabled={!fieldOptions.editable || requestStatus}
+                                                    name={innerField}
+                                                    value={formState[innerField] !== null ? formState[innerField] : ''}
+                                                    changeHandler={handleFieldChange}
                                                     updateHandler={(event) => updateFields(event, innerField)}
                                                 />
                                             ) : null}

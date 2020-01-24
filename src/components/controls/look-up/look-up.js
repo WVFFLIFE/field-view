@@ -76,7 +76,7 @@ export default class LookUp extends PureComponent {
 
     setOptionLabel = (option) => {
         const {name} = this.props;
-        if (name === 'ownerid' || name === 'managerid') {
+        if (name === 'ownerid' || name === 'managerid' || name === 'employeeid') {
             return `${option.firstname} ${option.lastname}`
         }
         

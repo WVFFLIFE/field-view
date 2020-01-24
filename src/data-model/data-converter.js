@@ -148,6 +148,18 @@ function dataForCard(str, obj) {
                 'status': obj.status
             }
 
+        case 'projectlog':
+            return {
+                '_id': obj._id,
+                'id': obj.id,
+                'year': obj.year,
+                'month': obj.month,
+                'projectid': obj.projectid.length ? {_id: obj.projectid[0]._id, name: obj.projectid[0].name} : {_id: '', name: ''},
+                'employeeid': obj.employeeid.length ? {_id: obj.employeeid[0]._id, firstname: obj.employeeid[0].firstname, lastname: obj.employeeid[0].lastname} : {_id: '', firstname: '', lastname: ''},
+                'totalamount': obj.totalamount,
+                'currency': obj.currency,
+            }
+
         default:
             return obj
     }
@@ -610,6 +622,18 @@ function getEmptyEntity(str) {
                 startdate: new Date(),
                 status: ''
             }
+        
+        case 'projectlog':
+            return {
+                year: new Date().getFullYear(),
+                month: '',
+                projectid: {_id: '', name: ''},
+                employeeid: {_id: '', firstname: '', lastname: ''},
+                totalamount: 0,
+                currency: '',
+                price: 0,
+                hoursworked: 0
+            }
 
         default:
             return {}
@@ -649,6 +673,12 @@ function getMainField(str) {
             return 'party';
 
         case 'managerid':
+            return 'person';
+
+        case 'projectid':
+            return 'project';
+
+        case 'employeeid':
             return 'person';
 
         default:
@@ -691,6 +721,12 @@ function setMainField(str) {
         case 'managerid':
             return 'name';
 
+        case 'projectid':
+            return 'name';
+
+        case 'employeeid':
+            return 'name';
+
         default:
             return str;
     }
@@ -706,6 +742,8 @@ function transformToCardTitle(str) {
             return 'Legal Entity'
         case 'socialplatform':
             return 'Social Platform'
+        case 'projectlog':
+            return 'Project Log'
         default :
             return str;
     }

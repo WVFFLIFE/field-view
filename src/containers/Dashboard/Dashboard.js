@@ -22,7 +22,8 @@ import {
     PersonDetails,
     Project,
     ProjectCreator,
-    ProjectLog
+    ProjectLog,
+    ProjectLogCreator
 } from '../../pages';
 import clsx from 'clsx';
 import { Redirect, Switch } from 'react-router-dom';
@@ -201,6 +202,8 @@ const Dashboard = () => {
                             <PrivateRouter path="/create-entity/project" exact component={ProjectCreator}/>
                             <PrivateRouter path="/project/:id" exact component={Details}/>
                             <PrivateRouter path="/project-log" exact component={ProjectLog}/>
+                            <PrivateRouter path="/create-entity/project-log" exact component={ProjectLogCreator}/>
+                            <PrivateRouter path="/project-log/:id" exact component={Details}/>
                             <Redirect to="/sales-invoice" />
                         </Switch>
                     </div>

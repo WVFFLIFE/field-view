@@ -202,6 +202,13 @@ const EntityCreatorView = props => {
                                                 handleTagChange={handleTagChange}
                                                 handleTagDelete={handleTagDelete}
                                             />
+                                        ) : fieldOptions.type === 'number' ? (
+                                            <TextField
+                                                type="number"
+                                                name={innerField}
+                                                value={data[innerField] !== null ? data[innerField] : ''}
+                                                changeHandler={(event) => handleFieldChange(event, parent)}
+                                            />
                                         ) : null}
                                     </StyledFormControl>
                                 </div>
@@ -212,7 +219,7 @@ const EntityCreatorView = props => {
                 </ExpansionPanel>
             ) : (
                     <StyledCard>
-                        <StyledCardHeader title={`Create New ${title}`} />
+                        <StyledCardHeader title={`Create ${title}`} />
                         <Divider />
                         <StyledCardContent>
                             {Object.keys(data).map(innerField => {
@@ -284,6 +291,13 @@ const EntityCreatorView = props => {
                                                     handleTagAdd={handleTagAdd}
                                                     handleTagChange={handleTagChange}
                                                     handleTagDelete={handleTagDelete}
+                                                />
+                                            ) : fieldOptions.type === 'number' ? (
+                                                <TextField
+                                                    type="number"
+                                                    name={innerField}
+                                                    value={data[innerField] !== null ? data[innerField] : ''}
+                                                    changeHandler={(event) => handleFieldChange(event, parent)}
                                                 />
                                             ) : null}
                                         </StyledFormControl>
